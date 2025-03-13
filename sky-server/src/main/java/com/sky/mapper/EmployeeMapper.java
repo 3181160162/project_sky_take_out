@@ -28,4 +28,8 @@ public interface EmployeeMapper {
 
     // 动态更新
     void update(Employee employee);
+
+    // 根据id查询员工
+    @Select("SELECT * FROM employee WHERE id = #{id}")
+    Employee findById(Long id);
 }
