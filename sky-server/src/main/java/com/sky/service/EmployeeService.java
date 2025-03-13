@@ -20,4 +20,7 @@ public interface EmployeeService {
 
     // 员工分页查询
     PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+    // 启用、禁用员工账号
+    void enableOrDisable(Integer status, Long id);
 }

@@ -104,4 +104,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         return new PageResult(total, result);
     }
+
+    @Override
+    public void enableOrDisable(Integer status, Long id) {
+
+        // 通过实体类的@Builder注释创建对象
+        Employee employee = Employee.builder()
+                .status(status)
+                .id(id)
+                .build();
+
+        employeeMapper.update(employee);
+    }
 }
