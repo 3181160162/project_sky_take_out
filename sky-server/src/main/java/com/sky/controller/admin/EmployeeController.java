@@ -120,6 +120,7 @@ public class EmployeeController {
         return Result.success();
     }
 
+    // 修改密码
     @PutMapping("/editPassword")
     public Result modifyPassword(@RequestBody PasswordEditDTO passwordEditDTO) {
         employeeService.modifyPassword(passwordEditDTO);
