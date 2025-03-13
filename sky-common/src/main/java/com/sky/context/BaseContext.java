@@ -1,5 +1,6 @@
 package com.sky.context;
 
+// 记录操作者的id
 public class BaseContext {
 
     public static ThreadLocal<Long> threadLocal = new ThreadLocal<>();
