@@ -9,6 +9,7 @@ import com.sky.context.BaseContext;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.dto.EmployeePageQueryDTO;
+import com.sky.dto.PasswordEditDTO;
 import com.sky.entity.Employee;
 import com.sky.exception.AccountLockedException;
 import com.sky.exception.AccountNotFoundException;
@@ -136,6 +137,25 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setUpdateTime(LocalDateTime.now());
         employee.setUpdateUser(BaseContext.getCurrentId());
 
+        employeeMapper.update(employee);
+    }
+
+    @Override
+    public void modifyPassword(PasswordEditDTO passwordEditDTO) {
+        Employee employee = employeeMapper.findById(passwordEditDTO.getEmpId());
+
+        if (employee == null) throw new AccountNotFoundException(MessageConstant.ACCOUNT_NOT_FOUND);
+
+        String oldPassword = passwordEditDTO.getOldPassword();
+        String newPassword = passwordEditDTO.getNewPassword();
+        oldPassword = DigestUtils.md5DigestAsHex(oldPassword.getBytes());
+        newPassword = DigestUtils.md5DigestAsHex(newPassword.getBytes());
+
+        if (!employee.getPassword().equals(oldPassword)) throw new PasswordErrorException(MessageConstant.PASSWORD_ERROR);
+
+        if (employee.getStatus() == 0) throw new AccountLockedException(MessageConstant.ACCOUNT_LOCKED);
+
+        employee.setPassword(newPassword);
         employeeMapper.update(employee);
     }
 }
