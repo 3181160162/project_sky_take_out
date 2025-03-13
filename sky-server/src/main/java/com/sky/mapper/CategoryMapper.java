@@ -3,8 +3,10 @@ package com.sky.mapper;
 import com.github.pagehelper.Page;
 import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.entity.Category;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface CategoryMapper {
@@ -14,4 +16,12 @@ public interface CategoryMapper {
     void insert(Category category);
 
     Page<Category> queryPage(CategoryPageQueryDTO categoryPageQueryDTO);
+
+    void update(Category category);
+
+    @Select("SELECT * FROM category WHERE id = #{id}")
+    Category findById(long id);
+
+    @Delete("DELETE FROM category WHERE id = #{id}")
+    void deleteById(long id);
 }

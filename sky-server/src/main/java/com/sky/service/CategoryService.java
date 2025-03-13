@@ -18,4 +18,23 @@ public interface CategoryService {
      * @return
      */
     PageResult queryPage(CategoryPageQueryDTO categoryPageQueryDTO);
+
+    /**
+     * 修改分类
+     * @param categoryDTO
+     */
+    void update(CategoryDTO categoryDTO);
+
+    /**
+     * 启用、禁用分类
+     * @param status
+     * @param id
+     */
+    void enableOrDisable(Integer status, long id);
+
+    /**
+     * 根据id删除分类
+     * @param id
+     */
+    void delete(long id);
 }

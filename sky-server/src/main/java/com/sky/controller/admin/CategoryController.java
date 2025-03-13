@@ -47,4 +47,47 @@ public class CategoryController {
 
         return Result.success(pageResult);
     }
+
+    /**
+     * 修改分类
+     * @param categoryDTO
+     * @return
+     */
+    @PutMapping
+    public Result update(@RequestBody CategoryDTO categoryDTO) {
+        log.info("修改分类：{}", categoryDTO);
+
+        categoryService.update(categoryDTO);
+
+        return Result.success();
+    }
+
+    /**
+     * 启用、禁用分类
+     * @param status
+     * @param id
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    public Result enableOrDisable(@PathVariable Integer status, long id) {
+        log.info("启用、禁用分类：{}，{}", id, status);
+
+        categoryService.enableOrDisable(status, id);
+
+        return Result.success();
+    }
+
+    /**
+     * 删除分类
+     * @param id
+     * @return
+     */
+    @DeleteMapping
+    public Result delete(long id) {
+        log.info("删除分类：{}", id);
+
+        categoryService.delete(id);
+
+        return Result.success();
+    }
 }
