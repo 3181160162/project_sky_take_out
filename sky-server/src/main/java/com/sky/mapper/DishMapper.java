@@ -22,4 +22,18 @@ public interface DishMapper {
     void insert(Dish dish);
 
     Page<DishVO> pageQuery(DishPageQueryDTO dishPageQueryDTO);
+
+    /**
+     * 根据主键查询菜品
+     * @param id
+     * @return
+     */
+    @Select("SELECT * FROM dish WHERE id = #{id}")
+    Dish getById(Long id);
+
+    /**
+     * 根据主键批量删除
+     * @param ids
+     */
+    void deleteBatch(List<Long> ids);
 }

@@ -18,4 +18,9 @@
         </where>
         ORDER BY d.id ASC
     </select>
+
+    <delete id="deleteBatch">
+        DELETE FROM dish WHERE id IN
+        <foreach collection="ids" item="id" separator="," open="(" close=")">#{id}</foreach>
+    </delete>
 </mapper>
