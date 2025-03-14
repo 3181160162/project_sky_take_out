@@ -9,7 +9,7 @@ sky:
   redis:
     host: localhost
     port: 6379
-    password: yin2030731
+    password: yin20030731
     database: 0
   alioss:
     access-key-id: ${ALIYUN_ACCESS_KEY_ID}
