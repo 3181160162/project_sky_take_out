@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/dish")
+@RequestMapping("/admin/dish")
 @Slf4j
 public class DishController {
 
