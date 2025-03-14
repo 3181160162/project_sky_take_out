@@ -38,4 +38,9 @@
         </set>
         WHERE id = #{id}
     </update>
+    
+    <select id="getBatchByIds" resultType="com.sky.entity.Dish">
+        SELECT * FROM dish WHERE id IN 
+        <foreach collection="dishIds" item="dishId" open="(" separator="," close=")">#{dishId}</foreach>
+    </select>
 </mapper>

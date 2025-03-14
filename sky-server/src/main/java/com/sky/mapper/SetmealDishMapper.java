@@ -11,4 +11,7 @@ public interface SetmealDishMapper {
 
     @Select("SELECT * FROM setmeal_dish WHERE dish_id = #{DishId}")
     List<SetmealDish> getByDishId(Long DishId);
+
+    @Select("SELECT * FROM setmeal_dish WHERE setmeal_id = #{setmealId}")
+    List<SetmealDish> getBySetmealId(Long setmealId);
 }

@@ -15,7 +15,7 @@ import java.util.List;
 /**
  *  分类管理
  */
-@RestController
+@RestController("adminCategoryController")
 @Slf4j
 @RequestMapping("/admin/category")
 public class CategoryController {
