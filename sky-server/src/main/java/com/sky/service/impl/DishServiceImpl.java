@@ -111,4 +111,20 @@ public class DishServiceImpl implements DishService {
 
         if (!dishDTO.getFlavors().isEmpty()) dishFlavorMapper.insertBatch(dishDTO.getFlavors());
     }
+
+    @Override
+    public void enableDisable(int status, Long id) {
+        Dish dish = Dish.builder()
+                .id(id)
+                .status(status)
+                .build();
+
+        dishMapper.update(dish);
+    }
+
+    @Override
+    public List<Dish> findByCategoryId(Long categoryId) {
+
+        return dishMapper.findByCate(categoryId);
+    }
 }
